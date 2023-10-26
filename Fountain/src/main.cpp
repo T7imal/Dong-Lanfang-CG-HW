@@ -15,7 +15,7 @@ typedef struct {
 } Water_Point;
 
 // 粒子数组
-Water_Point waterPoint[1000];
+Water_Point waterPoint[10000];
 
 // 粒子存活时间
 int waterPointLifeTime = 200;
@@ -32,22 +32,25 @@ float emitterPosition[3] = { 0.0, 0.0, 0.0 };
 // 粒子发射器速度
 float emitterSpeed[3] = { 0.0, 10.0, 0.0 };
 
-// 粒子发射器半径
-float emitterRadius = 0.2;
-
 int x = 0;
 
 // 粒子系统初始化
 void initFountain(int a, int b) {
     for (int i = a; i < b; i++) {
         // 粒子位置
-        waterPoint[i].position[0] = emitterPosition[0];
+        waterPoint[i].position[0] = emitterPosition[0] + (float)(rand() % 10 - 5) / 10;
         waterPoint[i].position[1] = emitterPosition[1];
-        waterPoint[i].position[2] = emitterPosition[2];
+        waterPoint[i].position[2] = emitterPosition[2] + (float)(rand() % 10 - 5) / 10;
+
         // 粒子速度
-        waterPoint[i].speed[0] = emitterSpeed[0] + rand() % 10 - 5;
-        waterPoint[i].speed[1] = emitterSpeed[1] + rand() % 10 - 5;
-        waterPoint[i].speed[2] = emitterSpeed[2] + rand() % 10 - 5;
+        waterPoint[i].speed[0] = emitterSpeed[0] + (float)(rand() % 10 - 5);
+        waterPoint[i].speed[1] = emitterSpeed[1] + (float)(rand() % 10 - 5);
+        waterPoint[i].speed[2] = emitterSpeed[2] + (float)(rand() % 10 - 5);
+
+        // 粒子颜色
+        waterPoint[i].color[0] = 1.0;
+        waterPoint[i].color[1] = 1.0;
+        waterPoint[i].color[2] = 1.0;
     }
 }
 
@@ -71,15 +74,10 @@ void updateFountain() {
         waterPoint[i].speed[1] += -9.8 * 0.01;
         waterPoint[i].speed[2] += 0.0;
 
-        // 粒子颜色
-        waterPoint[i].color[0] = 1.0;
-        waterPoint[i].color[1] = 1.0;
-        waterPoint[i].color[2] = 1.0;
-
         // 粒子落地
         if (waterPoint[i].position[1] < 0) {
             waterPoint[i].position[1] = 0;
-            waterPoint[i].speed[1] = -waterPoint[i].speed[1] / 2;
+            waterPoint[i].speed[1] = -0.3 * waterPoint[i].speed[1];
         }
     }
 }
@@ -105,7 +103,7 @@ void fountain() {
 void display() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-    gluLookAt(10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 10, 0);
+    gluLookAt(20.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0, 10, 0);
     fountain();
     glutSwapBuffers();
 }
