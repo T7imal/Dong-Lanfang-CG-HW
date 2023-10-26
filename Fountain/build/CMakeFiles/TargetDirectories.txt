@@ -1,0 +1,3 @@
+/home/hwc/桌面/Dong-Lanfang-CG-HW/Fountain/build/CMakeFiles/Fountain.dir
+/home/hwc/桌面/Dong-Lanfang-CG-HW/Fountain/build/CMakeFiles/edit_cache.dir
+/home/hwc/桌面/Dong-Lanfang-CG-HW/Fountain/build/CMakeFiles/rebuild_cache.dir
