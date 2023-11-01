@@ -1,0 +1,3 @@
+/home/hwc/Desktop/Dong-Lanfang-CG-HW/Parabola/build/CMakeFiles/Parabola.dir
+/home/hwc/Desktop/Dong-Lanfang-CG-HW/Parabola/build/CMakeFiles/edit_cache.dir
+/home/hwc/Desktop/Dong-Lanfang-CG-HW/Parabola/build/CMakeFiles/rebuild_cache.dir
